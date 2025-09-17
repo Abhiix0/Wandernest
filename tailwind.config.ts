@@ -22,6 +22,7 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          hover: "hsl(var(--primary-hover))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -84,6 +85,22 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-in": "fadeIn 0.6s ease-out",
+        "slide-up": "slideUp 0.8s ease-out",
+      },
+      fontFamily: {
+        heading: "var(--font-heading)",
+        body: "var(--font-body)",
+      },
+      backgroundImage: {
+        "hero-gradient": "var(--hero-gradient)",
+        "sunset-gradient": "var(--sunset-gradient)", 
+        "ocean-gradient": "var(--ocean-gradient)",
+      },
+      boxShadow: {
+        travel: "var(--shadow-travel)",
+        card: "var(--shadow-card)",
+        hero: "var(--shadow-hero)",
       },
     },
   },
