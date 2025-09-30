@@ -73,8 +73,9 @@ const BookTrip = () => {
               <Link to="/" className="hover:text-primary transition-smooth">Home</Link>
               <Link to="/destinations" className="hover:text-primary transition-smooth">Destinations</Link>
               <Link to="/guides" className="hover:text-primary transition-smooth">Travel Guides</Link>
-              <Link to="/book" className="text-primary font-medium">Book a Trip</Link>
-              <Link to="/about" className="hover:text-primary transition-smooth">About</Link>
+              <Link to="/safety" className="hover:text-primary transition-smooth">Safety</Link>
+              <Link to="/transportation" className="hover:text-primary transition-smooth">Transportation</Link>
+              <Link to="/book" className="text-primary font-medium">Book Trip</Link>
               <Link to="/contact" className="hover:text-primary transition-smooth">Contact</Link>
             </nav>
           </div>
