@@ -99,7 +99,10 @@ const Index = () => {
               <Link to="/guides" className="hover:text-primary transition-smooth">Travel Guides</Link>
               <Link to="/safety" className="hover:text-primary transition-smooth">Safety</Link>
               <Link to="/transportation" className="hover:text-primary transition-smooth">Transportation</Link>
-              <Link to="/book" className="hover:text-primary transition-smooth">Book Trip</Link>
+              <Link to="/itinerary-builder" className="hover:text-primary transition-smooth">Plan Trip</Link>
+              <Link to="/saved-trips" className="hover:text-primary transition-smooth">My Trips</Link>
+              <Link to="/packing-list" className="hover:text-primary transition-smooth">Packing</Link>
+              <Link to="/book" className="hover:text-primary transition-smooth">Book</Link>
               <Link to="/contact" className="hover:text-primary transition-smooth">Contact</Link>
             </nav>
             <div className="md:hidden">

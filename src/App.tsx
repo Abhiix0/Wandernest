@@ -11,6 +11,9 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Safety from "./pages/Safety";
 import Transportation from "./pages/Transportation";
+import ItineraryBuilder from "./pages/ItineraryBuilder";
+import SavedTrips from "./pages/SavedTrips";
+import PackingList from "./pages/PackingList";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +30,9 @@ const App = () => (
           <Route path="/guides" element={<TravelGuides />} />
           <Route path="/safety" element={<Safety />} />
           <Route path="/transportation" element={<Transportation />} />
+          <Route path="/itinerary-builder" element={<ItineraryBuilder />} />
+          <Route path="/saved-trips" element={<SavedTrips />} />
+          <Route path="/packing-list" element={<PackingList />} />
           <Route path="/book" element={<BookTrip />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
