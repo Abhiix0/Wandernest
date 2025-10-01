@@ -102,6 +102,9 @@ const Index = () => {
               <Link to="/itinerary-builder" className="hover:text-primary transition-smooth">Plan Trip</Link>
               <Link to="/saved-trips" className="hover:text-primary transition-smooth">My Trips</Link>
               <Link to="/packing-list" className="hover:text-primary transition-smooth">Packing</Link>
+              <Link to="/offline-mode" className="hover:text-primary transition-smooth">Offline</Link>
+              <Link to="/map" className="hover:text-primary transition-smooth">Map</Link>
+              <Link to="/travel-buddy" className="hover:text-primary transition-smooth">Find Buddy</Link>
               <Link to="/book" className="hover:text-primary transition-smooth">Book</Link>
               <Link to="/contact" className="hover:text-primary transition-smooth">Contact</Link>
             </nav>

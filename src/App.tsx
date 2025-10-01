@@ -14,6 +14,9 @@ import Transportation from "./pages/Transportation";
 import ItineraryBuilder from "./pages/ItineraryBuilder";
 import SavedTrips from "./pages/SavedTrips";
 import PackingList from "./pages/PackingList";
+import OfflineMode from "./pages/OfflineMode";
+import InteractiveMap from "./pages/InteractiveMap";
+import TravelBuddy from "./pages/TravelBuddy";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -33,6 +36,9 @@ const App = () => (
           <Route path="/itinerary-builder" element={<ItineraryBuilder />} />
           <Route path="/saved-trips" element={<SavedTrips />} />
           <Route path="/packing-list" element={<PackingList />} />
+          <Route path="/offline-mode" element={<OfflineMode />} />
+          <Route path="/map" element={<InteractiveMap />} />
+          <Route path="/travel-buddy" element={<TravelBuddy />} />
           <Route path="/book" element={<BookTrip />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
