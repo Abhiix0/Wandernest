@@ -17,6 +17,9 @@ import PackingList from "./pages/PackingList";
 import OfflineMode from "./pages/OfflineMode";
 import InteractiveMap from "./pages/InteractiveMap";
 import TravelBuddy from "./pages/TravelBuddy";
+import LocalGuides from "./pages/LocalGuides";
+import Community from "./pages/Community";
+import Gamification from "./pages/Gamification";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -39,6 +42,9 @@ const App = () => (
           <Route path="/offline-mode" element={<OfflineMode />} />
           <Route path="/map" element={<InteractiveMap />} />
           <Route path="/travel-buddy" element={<TravelBuddy />} />
+          <Route path="/local-guides" element={<LocalGuides />} />
+          <Route path="/community" element={<Community />} />
+          <Route path="/achievements" element={<Gamification />} />
           <Route path="/book" element={<BookTrip />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
