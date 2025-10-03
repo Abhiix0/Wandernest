@@ -19,10 +19,11 @@ import {
 const ITEMS_PER_PAGE = 12;
 
 const continents = ["All Continents", "Asia", "Europe", "North America", "South America", "Africa", "Oceania"];
-const travelTypes = ["All Types", "Beach", "Cultural", "Urban", "Adventure", "Nature", "Luxury", "History", "Food"];
+const travelTypes = ["All Types", "Beach", "Cultural", "Urban", "Adventure", "Nature", "Luxury", "History", "Food", "Spiritual", "Pilgrimage"];
 const budgetLevels = ["All Budgets", "Low", "Medium", "High"];
 const seasons = ["All Seasons", "Dec - Feb", "Mar - May", "Jun - Aug", "Sep - Nov"];
 const durations = ["All Durations", "Weekend", "1 Week", "2+ Weeks"];
+const locationTypes = ["All Types", "Country", "City", "Region", "Neighborhood", "Temple", "Monument", "Natural Wonder", "Attraction"];
 
 type SortOption = "popularity" | "rating" | "price-low" | "price-high" | "name";
 
@@ -33,6 +34,7 @@ const Destinations = () => {
   const [selectedBudget, setSelectedBudget] = useState("All Budgets");
   const [selectedSeason, setSelectedSeason] = useState("All Seasons");
   const [selectedDuration, setSelectedDuration] = useState("All Durations");
+  const [selectedLocationType, setSelectedLocationType] = useState("All Types");
   const [sortBy, setSortBy] = useState<SortOption>("popularity");
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -56,6 +58,7 @@ const Destinations = () => {
     setSelectedBudget("All Budgets");
     setSelectedSeason("All Seasons");
     setSelectedDuration("All Durations");
+    setSelectedLocationType("All Types");
     setCurrentPage(1);
   };
 
@@ -91,8 +94,10 @@ const Destinations = () => {
     const matchesBudget = selectedBudget === "All Budgets" || dest.budgetLevel === selectedBudget;
     const matchesSeason = selectedSeason === "All Seasons" || dest.bestSeason.includes(selectedSeason.split(" - ")[0]);
     const matchesDuration = selectedDuration === "All Durations" || dest.duration.includes(selectedDuration);
+    const matchesLocationType = selectedLocationType === "All Types" || 
+      (dest.locationType && dest.locationType.toLowerCase() === selectedLocationType.toLowerCase());
     
-    return matchesContinent && matchesTravelType && matchesBudget && matchesSeason && matchesDuration;
+    return matchesContinent && matchesTravelType && matchesBudget && matchesSeason && matchesDuration && matchesLocationType;
   });
 
   // Sort destinations
@@ -122,6 +127,7 @@ const Destinations = () => {
     selectedBudget !== "All Budgets" || 
     selectedSeason !== "All Seasons" || 
     selectedDuration !== "All Durations" ||
+    selectedLocationType !== "All Types" ||
     searchQuery !== "";
 
   return (
@@ -274,6 +280,26 @@ const Destinations = () => {
                       className={selectedDuration === duration ? "bg-accent" : ""}
                     >
                       {duration}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+
+              {/* Location Type */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" size="sm" className="gap-2">
+                    {selectedLocationType} <ChevronDown className="h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" className="w-48">
+                  {locationTypes.map((type) => (
+                    <DropdownMenuItem
+                      key={type}
+                      onClick={() => { setSelectedLocationType(type); setCurrentPage(1); }}
+                      className={selectedLocationType === type ? "bg-accent" : ""}
+                    >
+                      {type}
                     </DropdownMenuItem>
                   ))}
                 </DropdownMenuContent>
