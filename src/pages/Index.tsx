@@ -8,6 +8,8 @@ import heroImage from "@/assets/hero-beach.jpg";
 import baliImage from "@/assets/bali-destination.jpg";
 import santoriniImage from "@/assets/santorini-destination.jpg";
 import tokyoImage from "@/assets/tokyo-destination.jpg";
+import { CurrencySelector } from "@/components/CurrencySelector";
+import { Price } from "@/components/Price";
 
 const featuredDestinations = [
   {
@@ -111,8 +113,11 @@ const Index = () => {
               <Link to="/book" className="hover:text-primary transition-smooth">Book</Link>
               <Link to="/contact" className="hover:text-primary transition-smooth">Contact</Link>
             </nav>
-            <div className="md:hidden">
-              <Button variant="outline" size="sm">Menu</Button>
+            <div className="flex items-center gap-2">
+              <CurrencySelector />
+              <div className="md:hidden">
+                <Button variant="outline" size="sm">Menu</Button>
+              </div>
             </div>
           </div>
         </div>
@@ -219,7 +224,9 @@ const Index = () => {
                         <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                         <span className="text-sm">{destination.rating}</span>
                       </div>
-                      <span className="text-sm font-semibold">{destination.price}</span>
+                      <span className="text-sm font-semibold">
+                        <Price priceString={destination.price} />
+                      </span>
                     </div>
                   </div>
                 </div>

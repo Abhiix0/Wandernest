@@ -4,6 +4,8 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Search, Filter } from "lucide-react";
 import { Link } from "react-router-dom";
+import { CurrencySelector } from "@/components/CurrencySelector";
+import { Price } from "@/components/Price";
 
 const destinations = [
   {
@@ -82,6 +84,7 @@ const Destinations = () => {
               <Link to="/about" className="hover:text-primary transition-smooth">About</Link>
               <Link to="/contact" className="hover:text-primary transition-smooth">Contact</Link>
             </nav>
+            <CurrencySelector />
           </div>
         </div>
       </header>
@@ -159,7 +162,9 @@ const Destinations = () => {
                 <CardHeader>
                   <CardTitle className="flex items-center justify-between">
                     <span>{destination.name}</span>
-                    <span className="text-lg text-primary font-bold">{destination.price}</span>
+                    <span className="text-lg text-primary font-bold">
+                      <Price priceString={destination.price} showOriginal />
+                    </span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
