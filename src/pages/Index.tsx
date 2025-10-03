@@ -10,6 +10,7 @@ import santoriniImage from "@/assets/santorini-destination.jpg";
 import tokyoImage from "@/assets/tokyo-destination.jpg";
 import { CurrencySelector } from "@/components/CurrencySelector";
 import { Price } from "@/components/Price";
+import { SearchBar } from "@/components/SearchBar";
 
 const featuredDestinations = [
   {
@@ -141,19 +142,8 @@ const Index = () => {
           </p>
           
           {/* Search Bar */}
-          <div className="max-w-2xl mx-auto bg-white/10 backdrop-blur-sm rounded-2xl p-3 animate-slide-up">
-            <div className="flex flex-col md:flex-row gap-3">
-              <div className="flex items-center gap-3 flex-1">
-                <Search className="h-5 w-5 text-white/70 ml-2" />
-                <Input 
-                  placeholder="Where do you want to go?" 
-                  className="border-none bg-transparent text-white placeholder:text-white/70 focus-visible:ring-0"
-                />
-              </div>
-              <Button size="lg" className="bg-primary hover:bg-primary-hover text-white">
-                Explore Now
-              </Button>
-            </div>
+          <div className="animate-slide-up">
+            <SearchBar variant="hero" placeholder="Where do you want to go?" />
           </div>
           
           <div className="flex flex-wrap justify-center gap-4 mt-8 animate-slide-up">

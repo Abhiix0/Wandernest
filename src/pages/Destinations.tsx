@@ -6,6 +6,8 @@ import { MapPin, Search, Filter } from "lucide-react";
 import { Link } from "react-router-dom";
 import { CurrencySelector } from "@/components/CurrencySelector";
 import { Price } from "@/components/Price";
+import { SearchBar } from "@/components/SearchBar";
+import { useState, useEffect } from "react";
 
 const destinations = [
   {
@@ -67,6 +69,32 @@ const destinations = [
 const categories = ["All", "Tropical", "Mediterranean", "Urban", "Adventure", "Cultural", "Luxury"];
 
 const Destinations = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const search = params.get('search');
+    if (search) {
+      setSearchQuery(search);
+    }
+  }, []);
+
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+  };
+
+  const filteredDestinations = destinations.filter(dest => {
+    const matchesSearch = searchQuery === "" || 
+      dest.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      dest.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      dest.category.toLowerCase().includes(searchQuery.toLowerCase());
+    
+    const matchesCategory = selectedCategory === "All" || dest.category === selectedCategory;
+    
+    return matchesSearch && matchesCategory;
+  });
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -100,17 +128,13 @@ const Destinations = () => {
           </p>
           
           {/* Search Bar */}
-          <div className="max-w-2xl mx-auto bg-white/10 backdrop-blur-sm rounded-full p-2 animate-slide-up">
-            <div className="flex items-center gap-2">
-              <Search className="h-5 w-5 ml-4 text-white/70" />
-              <Input 
-                placeholder="Search destinations..." 
-                className="border-none bg-transparent text-white placeholder:text-white/70 focus-visible:ring-0"
-              />
-              <Button size="lg" className="rounded-full bg-white text-primary hover:bg-white/90">
-                Search
-              </Button>
-            </div>
+          <div className="animate-slide-up">
+            <SearchBar 
+              onSearch={handleSearch}
+              placeholder="Search destinations..." 
+              variant="hero"
+              autoNavigate={false}
+            />
           </div>
         </div>
       </section>
@@ -126,8 +150,9 @@ const Destinations = () => {
             {categories.map((category) => (
               <Badge 
                 key={category}
-                variant={category === "All" ? "default" : "secondary"}
+                variant={category === selectedCategory ? "default" : "secondary"}
                 className="cursor-pointer hover-lift"
+                onClick={() => setSelectedCategory(category)}
               >
                 {category}
               </Badge>
@@ -139,8 +164,17 @@ const Destinations = () => {
       {/* Destinations Grid */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {destinations.map((destination, index) => (
+          {filteredDestinations.length === 0 ? (
+            <div className="text-center py-16">
+              <p className="text-2xl text-muted-foreground mb-4">No destinations found</p>
+              <p className="text-muted-foreground mb-6">Try adjusting your search or filters</p>
+              <Button onClick={() => { setSearchQuery(""); setSelectedCategory("All"); }}>
+                Clear Filters
+              </Button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredDestinations.map((destination, index) => (
               <Card key={destination.id} className="overflow-hidden hover-lift shadow-card">
                 <div className="h-64 bg-muted relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10" />
@@ -174,8 +208,9 @@ const Destinations = () => {
                   </Button>
                 </CardContent>
               </Card>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
