@@ -22,6 +22,7 @@ import Community from "./pages/Community";
 import Gamification from "./pages/Gamification";
 import AIConcierge from "./pages/AIConcierge";
 import SmartPredictions from "./pages/SmartPredictions";
+import SOSButton from "./components/SOSButton";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -55,6 +56,7 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <SOSButton />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
