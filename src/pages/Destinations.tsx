@@ -379,9 +379,11 @@ const Destinations = () => {
                         <p className="text-xs text-muted-foreground mb-1">Top Attractions:</p>
                         <p className="text-xs">{destination.topAttractions.slice(0, 2).join(", ")}</p>
                       </div>
-                      <Button className="w-full bg-primary hover:bg-primary-hover" aria-label={`View details for ${destination.name}`}>
-                        View Details
-                      </Button>
+                      <Link to={`/destinations/${destination.id}`} className="block w-full">
+                        <Button className="w-full bg-primary hover:bg-primary-hover" aria-label={`View details for ${destination.name}`}>
+                          View Details
+                        </Button>
+                      </Link>
                     </CardContent>
                   </Card>
                 ))}

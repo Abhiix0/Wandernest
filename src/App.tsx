@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CurrencyProvider } from "@/hooks/useCurrency";
 import Index from "./pages/Index";
 import Destinations from "./pages/Destinations";
+import DestinationDetails from "./pages/DestinationDetails";
 import TravelGuides from "./pages/TravelGuides";
 import BookTrip from "./pages/BookTrip";
 import About from "./pages/About";
@@ -38,6 +39,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/destinations" element={<Destinations />} />
+          <Route path="/destinations/:id" element={<DestinationDetails />} />
           <Route path="/guides" element={<TravelGuides />} />
           <Route path="/safety" element={<Safety />} />
           <Route path="/transportation" element={<Transportation />} />

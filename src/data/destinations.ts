@@ -15,6 +15,14 @@ export interface Destination {
   travelType: string[];
   budgetLevel: string;
   duration: string[];
+  locationType?: "country" | "city" | "region" | "neighborhood";
+  parentLocation?: string;
+  overview?: string;
+  safetyTips?: string[];
+  localTransport?: string[];
+  averageDailyCost?: string;
+  suggestedItinerary?: string[];
+  nearbyDestinations?: string[];
 }
 
 export const destinations: Destination[] = [
@@ -128,9 +136,140 @@ export const destinations: Destination[] = [
     duration: ["1 Week", "2+ Weeks"]
   },
 
-  // Asia - Major Cities & Regions
+  // India - Mumbai Neighborhoods
   {
     id: 7,
+    name: "Mumbai",
+    country: "India",
+    continent: "Asia",
+    image: "/placeholder.svg",
+    price: "From $40/night",
+    rating: 4.3,
+    category: "Urban",
+    description: "India's financial capital, a vibrant metropolis blending colonial architecture with modern skyscrapers.",
+    bestSeason: "Nov - Feb",
+    topAttractions: ["Gateway of India", "Marine Drive", "Elephanta Caves", "Chhatrapati Shivaji Terminus"],
+    currency: "INR",
+    airport: "BOM - Chhatrapati Shivaji Maharaj International",
+    travelType: ["Urban", "Cultural", "Food"],
+    budgetLevel: "Low",
+    duration: ["Weekend", "1 Week"],
+    locationType: "city",
+    overview: "Mumbai is the city of dreams, Bollywood, and endless energy. From colonial architecture to bustling street markets, the city offers an authentic Indian experience. It's a melting pot of cultures, cuisines, and contrasts where tradition meets modernity.",
+    safetyTips: ["Be cautious in crowded areas", "Use official taxis or ride-sharing apps", "Avoid street food if sensitive stomach", "Keep belongings secure in local trains"],
+    localTransport: ["Local trains (lifeline of Mumbai)", "Metro", "Auto-rickshaws", "BEST buses", "Taxis", "App-based cabs"],
+    averageDailyCost: "$30-60",
+    suggestedItinerary: ["Day 1: South Mumbai & Colonial Heritage", "Day 2: Bandra & Juhu Beach", "Day 3: Elephanta Caves Day Trip", "Day 4: Street Food Tour & Shopping"],
+    nearbyDestinations: ["Dadar", "Bandra", "Andheri", "Lonavala", "Alibaug"]
+  },
+  {
+    id: 8,
+    name: "Dadar",
+    country: "India",
+    continent: "Asia",
+    image: "/placeholder.svg",
+    price: "From $25/night",
+    rating: 4.2,
+    category: "Local Experience",
+    description: "The heart of Mumbai, famous for its vibrant flower market, local street food, and authentic Maharashtrian culture.",
+    bestSeason: "Nov - Feb",
+    topAttractions: ["Dadar Flower Market", "Shivaji Park", "Chaityabhoomi", "Siddhivinayak Temple", "Prakash Uphar Kendra"],
+    currency: "INR",
+    airport: "BOM - Chhatrapati Shivaji Maharaj International",
+    travelType: ["Cultural", "Food", "Urban"],
+    budgetLevel: "Low",
+    duration: ["Weekend"],
+    locationType: "neighborhood",
+    parentLocation: "Mumbai, India",
+    overview: "Dadar is a bustling neighborhood that represents the authentic spirit of Mumbai. Known for its morning flower market, historic Shivaji Park, and incredible street food scene, it's where you'll experience the real Mumbai away from tourist crowds.",
+    safetyTips: ["Safe area, but crowded during peak hours", "Watch belongings in markets", "Bargain at flower market", "Try street food at popular established stalls", "Dadar station can be overwhelming during rush hours"],
+    localTransport: ["Local trains (Dadar is a major junction)", "BEST buses", "Auto-rickshaws", "Walking is great for exploring"],
+    averageDailyCost: "$20-40",
+    suggestedItinerary: ["Early Morning: Dadar Flower Market (5-9 AM)", "Breakfast: Prakash Uphar Kendra for Misal Pav", "Mid-Morning: Shivaji Park walk", "Lunch: Local Maharashtrian Thali", "Afternoon: Visit Chaityabhoomi", "Evening: Street food at Dadar TT", "Dinner: Authentic South Indian cuisine"],
+    nearbyDestinations: ["Bandra", "Worli", "Prabhadevi", "Matunga"]
+  },
+  {
+    id: 9,
+    name: "Bandra",
+    country: "India",
+    continent: "Asia",
+    image: "/placeholder.svg",
+    price: "From $50/night",
+    rating: 4.5,
+    category: "Urban Lifestyle",
+    description: "Mumbai's trendy neighborhood, known for its hip cafes, boutique shops, celebrity homes, and the iconic Bandra-Worli Sea Link.",
+    bestSeason: "Nov - Feb",
+    topAttractions: ["Bandra-Worli Sea Link", "Carter Road Promenade", "Mount Mary Church", "Linking Road Shopping", "Hill Road", "Bandstand"],
+    currency: "INR",
+    airport: "BOM - Chhatrapati Shivaji Maharaj International",
+    travelType: ["Urban", "Food", "Luxury"],
+    budgetLevel: "Medium",
+    duration: ["Weekend"],
+    locationType: "neighborhood",
+    parentLocation: "Mumbai, India",
+    overview: "Bandra is Mumbai's most cosmopolitan suburb, often called the 'Queen of the Suburbs'. It's home to Bollywood celebrities, upscale restaurants, trendy cafes, art galleries, and a vibrant nightlife. The area perfectly blends old-world Goan charm with modern Mumbai lifestyle.",
+    safetyTips: ["Very safe neighborhood", "Crowded on weekends especially at Carter Road", "Book restaurants in advance", "Parking can be difficult", "Evening walks on promenades are safe"],
+    localTransport: ["Local trains (Bandra station)", "Metro (convenient)", "Auto-rickshaws", "Taxis", "App-based cabs", "Walking along promenades"],
+    averageDailyCost: "$40-80",
+    suggestedItinerary: ["Morning: Carter Road walk & breakfast at a seaside cafe", "Late Morning: Mount Mary Church", "Afternoon: Linking Road shopping", "Evening: Bandstand & celebrity home spotting", "Night: Dinner at Pali Hill restaurants", "Late Night: Bandra nightlife"],
+    nearbyDestinations: ["Juhu", "Khar", "Dadar", "Worli"]
+  },
+  {
+    id: 10,
+    name: "Andheri",
+    country: "India",
+    continent: "Asia",
+    image: "/placeholder.svg",
+    price: "From $35/night",
+    rating: 4.0,
+    category: "Urban Experience",
+    description: "A major commercial and residential hub connecting old Mumbai charm with modern business districts and entertainment zones.",
+    bestSeason: "Nov - Feb",
+    topAttractions: ["Prithvi Theatre", "Lokhandwala Market", "Versova Beach", "ISKCON Temple", "Four Bungalows Market"],
+    currency: "INR",
+    airport: "BOM - Chhatrapati Shivaji Maharaj International",
+    travelType: ["Urban", "Food", "Cultural"],
+    budgetLevel: "Low",
+    duration: ["Weekend"],
+    locationType: "neighborhood",
+    parentLocation: "Mumbai, India",
+    overview: "Andheri is one of Mumbai's largest suburbs, divided into East and West. Andheri East is close to the airport and houses major business parks, while Andheri West is known for its cafes, restaurants, Versova village charm, and the famous Prithvi Theatre.",
+    safetyTips: ["Generally safe area", "Avoid isolated areas at night", "Use reliable transport", "Be cautious in crowded markets", "Versova village is safe but narrow lanes"],
+    localTransport: ["Metro (very convenient, connects East & West)", "Local trains", "Auto-rickshaws", "App-based cabs", "BEST buses"],
+    averageDailyCost: "$30-50",
+    suggestedItinerary: ["Morning: Versova Beach walk", "Brunch: Versova village cafe", "Afternoon: Lokhandwala shopping", "Evening: Prithvi Theatre performance or cafe", "Dinner: Local restaurant in Andheri West", "Optional: ISKCON Temple visit"],
+    nearbyDestinations: ["Juhu", "Bandra", "Goregaon", "Vile Parle"]
+  },
+  {
+    id: 11,
+    name: "Juhu",
+    country: "India",
+    continent: "Asia",
+    image: "/placeholder.svg",
+    price: "From $60/night",
+    rating: 4.4,
+    category: "Beach",
+    description: "Upscale beachside neighborhood famous for Juhu Beach, street food, and luxury residences.",
+    bestSeason: "Nov - Feb",
+    topAttractions: ["Juhu Beach", "Beach Street Food", "ISKCON Temple", "Prithvi Theatre nearby"],
+    currency: "INR",
+    airport: "BOM - Chhatrapati Shivaji Maharaj International",
+    travelType: ["Beach", "Food", "Urban"],
+    budgetLevel: "Medium",
+    duration: ["Weekend"],
+    locationType: "neighborhood",
+    parentLocation: "Mumbai, India",
+    overview: "Juhu is one of Mumbai's most affluent neighborhoods, home to many Bollywood celebrities. The famous Juhu Beach is the main attraction, especially in the evenings when locals and tourists gather to enjoy street food and watch the sunset.",
+    safetyTips: ["Very safe area", "Beach can be crowded on weekends", "Try street food from busy stalls", "Don't swim in the sea (polluted)", "Evening walks are safe"],
+    localTransport: ["Auto-rickshaws", "Taxis", "App-based cabs", "BEST buses", "Walking on beach road"],
+    averageDailyCost: "$50-100",
+    suggestedItinerary: ["Morning: Hotel breakfast or local cafe", "Late Morning: Shopping at Juhu market", "Afternoon: Relax or visit nearby attractions", "Evening: Juhu Beach sunset & street food", "Night: Dinner at upscale restaurant"],
+    nearbyDestinations: ["Andheri", "Bandra", "Vile Parle", "Goregaon"]
+  },
+
+  // Asia - Major Cities & Regions
+  {
+    id: 12,
     name: "Bali",
     country: "Indonesia",
     continent: "Asia",
@@ -148,7 +287,7 @@ export const destinations: Destination[] = [
     duration: ["1 Week", "2+ Weeks"]
   },
   {
-    id: 8,
+    id: 13,
     name: "Tokyo",
     country: "Japan",
     continent: "Asia",
@@ -166,7 +305,7 @@ export const destinations: Destination[] = [
     duration: ["Weekend", "1 Week"]
   },
   {
-    id: 9,
+    id: 14,
     name: "Kyoto",
     country: "Japan",
     continent: "Asia",
@@ -184,7 +323,7 @@ export const destinations: Destination[] = [
     duration: ["Weekend", "1 Week"]
   },
   {
-    id: 10,
+    id: 15,
     name: "Dubai",
     country: "UAE",
     continent: "Asia",
@@ -202,7 +341,7 @@ export const destinations: Destination[] = [
     duration: ["Weekend", "1 Week"]
   },
   {
-    id: 11,
+    id: 16,
     name: "Bangkok",
     country: "Thailand",
     continent: "Asia",
@@ -220,7 +359,7 @@ export const destinations: Destination[] = [
     duration: ["Weekend", "1 Week"]
   },
   {
-    id: 12,
+    id: 17,
     name: "Phuket",
     country: "Thailand",
     continent: "Asia",
@@ -238,7 +377,7 @@ export const destinations: Destination[] = [
     duration: ["Weekend", "1 Week"]
   },
   {
-    id: 13,
+    id: 18,
     name: "Maldives",
     country: "Maldives",
     continent: "Asia",
@@ -256,7 +395,7 @@ export const destinations: Destination[] = [
     duration: ["1 Week", "2+ Weeks"]
   },
   {
-    id: 14,
+    id: 19,
     name: "Singapore",
     country: "Singapore",
     continent: "Asia",
@@ -274,7 +413,7 @@ export const destinations: Destination[] = [
     duration: ["Weekend", "1 Week"]
   },
   {
-    id: 15,
+    id: 20,
     name: "Istanbul",
     country: "Turkey",
     continent: "Asia",
@@ -292,7 +431,7 @@ export const destinations: Destination[] = [
     duration: ["Weekend", "1 Week"]
   },
   {
-    id: 16,
+    id: 21,
     name: "Cappadocia",
     country: "Turkey",
     continent: "Asia",
@@ -310,7 +449,7 @@ export const destinations: Destination[] = [
     duration: ["Weekend", "1 Week"]
   },
   {
-    id: 17,
+    id: 22,
     name: "Petra",
     country: "Jordan",
     continent: "Asia",
@@ -328,7 +467,7 @@ export const destinations: Destination[] = [
     duration: ["Weekend", "1 Week"]
   },
   {
-    id: 18,
+    id: 23,
     name: "Seoul",
     country: "South Korea",
     continent: "Asia",
@@ -346,7 +485,7 @@ export const destinations: Destination[] = [
     duration: ["Weekend", "1 Week"]
   },
   {
-    id: 19,
+    id: 24,
     name: "Hanoi",
     country: "Vietnam",
     continent: "Asia",
@@ -364,7 +503,7 @@ export const destinations: Destination[] = [
     duration: ["Weekend", "1 Week"]
   },
   {
-    id: 20,
+    id: 25,
     name: "Siem Reap",
     country: "Cambodia",
     continent: "Asia",
@@ -384,7 +523,7 @@ export const destinations: Destination[] = [
 
   // Europe - Major Cities & Regions
   {
-    id: 21,
+    id: 26,
     name: "Santorini",
     country: "Greece",
     continent: "Europe",
@@ -402,7 +541,7 @@ export const destinations: Destination[] = [
     duration: ["Weekend", "1 Week"]
   },
   {
-    id: 22,
+    id: 27,
     name: "Paris",
     country: "France",
     continent: "Europe",
@@ -420,7 +559,7 @@ export const destinations: Destination[] = [
     duration: ["Weekend", "1 Week"]
   },
   {
-    id: 23,
+    id: 28,
     name: "Provence",
     country: "France",
     continent: "Europe",
@@ -438,7 +577,7 @@ export const destinations: Destination[] = [
     duration: ["1 Week", "2+ Weeks"]
   },
   {
-    id: 24,
+    id: 29,
     name: "Barcelona",
     country: "Spain",
     continent: "Europe",
@@ -456,7 +595,7 @@ export const destinations: Destination[] = [
     duration: ["Weekend", "1 Week"]
   },
   {
-    id: 25,
+    id: 30,
     name: "Rome",
     country: "Italy",
     continent: "Europe",
@@ -474,7 +613,7 @@ export const destinations: Destination[] = [
     duration: ["Weekend", "1 Week"]
   },
   {
-    id: 26,
+    id: 31,
     name: "Tuscany",
     country: "Italy",
     continent: "Europe",
@@ -492,7 +631,7 @@ export const destinations: Destination[] = [
     duration: ["1 Week", "2+ Weeks"]
   },
   {
-    id: 27,
+    id: 32,
     name: "Venice",
     country: "Italy",
     continent: "Europe",
