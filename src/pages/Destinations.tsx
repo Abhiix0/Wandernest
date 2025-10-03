@@ -5,9 +5,10 @@ import { MapPin, Filter, ChevronDown, ArrowUpDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import { CurrencySelector } from "@/components/CurrencySelector";
 import { Price } from "@/components/Price";
-import { SearchBar } from "@/components/SearchBar";
+import { SearchBarWithAutocomplete } from "@/components/SearchBarWithAutocomplete";
 import { useState, useEffect } from "react";
 import { destinations, Destination } from "@/data/destinations";
+import Fuse from "fuse.js";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -63,20 +64,35 @@ const Destinations = () => {
     return match ? parseInt(match[1]) : 0;
   };
 
-  let filteredDestinations = destinations.filter(dest => {
-    const matchesSearch = searchQuery === "" || 
-      dest.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      dest.country.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      dest.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      dest.topAttractions.some(attr => attr.toLowerCase().includes(searchQuery.toLowerCase()));
-    
+  // Configure Fuse.js for advanced fuzzy search
+  const fuse = new Fuse(destinations, {
+    keys: [
+      { name: "name", weight: 3 },
+      { name: "country", weight: 2 },
+      { name: "description", weight: 1 },
+      { name: "topAttractions", weight: 1.5 },
+      { name: "category", weight: 1 },
+      { name: "travelType", weight: 1.2 }
+    ],
+    threshold: 0.3,
+    includeScore: true,
+    minMatchCharLength: 2
+  });
+
+  // Use fuzzy search when there's a search query, otherwise show all
+  let filteredDestinations = searchQuery.trim() !== "" 
+    ? fuse.search(searchQuery).map(result => result.item)
+    : destinations;
+
+  // Apply filters after search
+  filteredDestinations = filteredDestinations.filter(dest => {
     const matchesContinent = selectedContinent === "All Continents" || dest.continent === selectedContinent;
     const matchesTravelType = selectedTravelType === "All Types" || dest.travelType.includes(selectedTravelType);
     const matchesBudget = selectedBudget === "All Budgets" || dest.budgetLevel === selectedBudget;
     const matchesSeason = selectedSeason === "All Seasons" || dest.bestSeason.includes(selectedSeason.split(" - ")[0]);
     const matchesDuration = selectedDuration === "All Durations" || dest.duration.includes(selectedDuration);
     
-    return matchesSearch && matchesContinent && matchesTravelType && matchesBudget && matchesSeason && matchesDuration;
+    return matchesContinent && matchesTravelType && matchesBudget && matchesSeason && matchesDuration;
   });
 
   // Sort destinations
@@ -140,11 +156,11 @@ const Destinations = () => {
             Discover your next adventure from our curated collection of breathtaking locations
           </p>
           
-          {/* Search Bar */}
+          {/* Search Bar with Autocomplete */}
           <div className="animate-slide-up">
-            <SearchBar 
+            <SearchBarWithAutocomplete 
               onSearch={handleSearch}
-              placeholder="Search destinations..." 
+              placeholder="Search destinations, cities, regions..." 
               variant="hero"
               autoNavigate={false}
             />
@@ -271,8 +287,11 @@ const Destinations = () => {
             </div>
 
             {/* Sort Options */}
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between flex-wrap gap-4">
               <p className="text-sm text-muted-foreground">
+                {searchQuery && (
+                  <span className="font-medium">Results for "{searchQuery}": </span>
+                )}
                 Showing {startIndex + 1}-{Math.min(startIndex + ITEMS_PER_PAGE, filteredDestinations.length)} of {filteredDestinations.length} destinations
               </p>
               
