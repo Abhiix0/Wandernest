@@ -20,6 +20,8 @@ import TravelBuddy from "./pages/TravelBuddy";
 import LocalGuides from "./pages/LocalGuides";
 import Community from "./pages/Community";
 import Gamification from "./pages/Gamification";
+import AIConcierge from "./pages/AIConcierge";
+import SmartPredictions from "./pages/SmartPredictions";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -45,6 +47,8 @@ const App = () => (
           <Route path="/local-guides" element={<LocalGuides />} />
           <Route path="/community" element={<Community />} />
           <Route path="/achievements" element={<Gamification />} />
+          <Route path="/ai-concierge" element={<AIConcierge />} />
+          <Route path="/smart-predictions" element={<SmartPredictions />} />
           <Route path="/book" element={<BookTrip />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
