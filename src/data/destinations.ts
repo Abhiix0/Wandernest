@@ -2153,7 +2153,6 @@ export const destinations: Destination[] = [
     ],
     nearbyDestinations: ["Kasol", "Manikaran", "Naggar", "Dharamshala", "Shimla"],
     significance: "One of India's premier adventure tourism destinations",
-    localTransport: ["Local taxis", "Buses", "Bike rentals", "Auto-rickshaws in town"],
     coordinates: { lat: 32.2396, lng: 77.1887 }
   },
   {
