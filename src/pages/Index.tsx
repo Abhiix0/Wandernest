@@ -89,41 +89,6 @@ const features = [
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b bg-card/50 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link to="/" className="text-2xl font-bold text-gradient">
-              WanderNest
-            </Link>
-            <nav className="hidden md:flex items-center gap-6">
-              <Link to="/" className="text-primary font-medium">Home</Link>
-              <Link to="/destinations" className="hover:text-primary transition-smooth">Destinations</Link>
-              <Link to="/guides" className="hover:text-primary transition-smooth">Travel Guides</Link>
-              <Link to="/safety" className="hover:text-primary transition-smooth">Safety</Link>
-              <Link to="/transportation" className="hover:text-primary transition-smooth">Transportation</Link>
-              <Link to="/itinerary-builder" className="hover:text-primary transition-smooth">Plan Trip</Link>
-              <Link to="/saved-trips" className="hover:text-primary transition-smooth">My Trips</Link>
-              <Link to="/packing-list" className="hover:text-primary transition-smooth">Packing</Link>
-              <Link to="/offline-mode" className="hover:text-primary transition-smooth">Offline</Link>
-              <Link to="/map" className="hover:text-primary transition-smooth">Map</Link>
-              <Link to="/travel-buddy" className="hover:text-primary transition-smooth">Find Buddy</Link>
-              <Link to="/local-guides" className="hover:text-primary transition-smooth">Guides</Link>
-              <Link to="/community" className="hover:text-primary transition-smooth">Community</Link>
-              <Link to="/achievements" className="hover:text-primary transition-smooth">Rewards</Link>
-              <Link to="/book" className="hover:text-primary transition-smooth">Book</Link>
-              <Link to="/contact" className="hover:text-primary transition-smooth">Contact</Link>
-            </nav>
-            <div className="flex items-center gap-2">
-              <CurrencySelector />
-              <div className="md:hidden">
-                <Button variant="outline" size="sm">Menu</Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
-
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div 

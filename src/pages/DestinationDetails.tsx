@@ -52,26 +52,6 @@ const DestinationDetails = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b bg-card/50 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link to="/" className="text-2xl font-bold text-gradient">
-              WanderNest
-            </Link>
-            <nav className="hidden md:flex items-center gap-6">
-              <Link to="/" className="hover:text-primary transition-smooth">Home</Link>
-              <Link to="/destinations" className="text-primary font-medium">Destinations</Link>
-              <Link to="/guides" className="hover:text-primary transition-smooth">Travel Guides</Link>
-              <Link to="/book" className="hover:text-primary transition-smooth">Book a Trip</Link>
-              <Link to="/about" className="hover:text-primary transition-smooth">About</Link>
-              <Link to="/contact" className="hover:text-primary transition-smooth">Contact</Link>
-            </nav>
-            <CurrencySelector />
-          </div>
-        </div>
-      </header>
-
       {/* Back Button */}
       <div className="container mx-auto px-4 py-4">
         <Button variant="ghost" onClick={() => navigate("/destinations")} className="gap-2">

@@ -43,19 +43,19 @@ export const NavigationDrawer = ({ open, onOpenChange }: NavigationDrawerProps) 
   const mainLinks = [
     { name: "Home", path: "/", icon: Home },
     { name: "Destinations", path: "/destinations", icon: MapPin },
-    { name: "Plan Trip", path: "/book-trip", icon: Plane },
+    { name: "Plan Trip", path: "/book", icon: Plane },
     { name: "Community", path: "/community", icon: Users },
   ];
 
   const featureLinks = [
-    { name: "Interactive Map", path: "/interactive-map", icon: Map },
+    { name: "Interactive Map", path: "/map", icon: Map },
     { name: "Itinerary Builder", path: "/itinerary-builder", icon: Route },
     { name: "Packing List", path: "/packing-list", icon: FileText },
     { name: "Safety Resources", path: "/safety", icon: Shield },
     { name: "AI Concierge", path: "/ai-concierge", icon: MessageSquare },
     { name: "Travel Buddy Finder", path: "/travel-buddy", icon: Users2 },
     { name: "Local Guides", path: "/local-guides", icon: User },
-    { name: "Gamification", path: "/gamification", icon: Gamepad2 },
+    { name: "Achievements", path: "/achievements", icon: Gamepad2 },
     { name: "Smart Predictions", path: "/smart-predictions", icon: TrendingUp },
     { name: "Transportation", path: "/transportation", icon: Car },
     { name: "Offline Mode", path: "/offline-mode", icon: BookOpen },
@@ -64,7 +64,7 @@ export const NavigationDrawer = ({ open, onOpenChange }: NavigationDrawerProps) 
   const resourceLinks = [
     { name: "About Us", path: "/about", icon: Info },
     { name: "Contact", path: "/contact", icon: Mail },
-    { name: "Travel Guides", path: "/travel-guides", icon: BookOpen },
+    { name: "Travel Guides", path: "/guides", icon: BookOpen },
     { name: "Saved Trips", path: "/saved-trips", icon: Wallet },
   ];
 

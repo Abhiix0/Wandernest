@@ -135,18 +135,16 @@ export default function Gamification() {
       </Helmet>
 
       <div className="min-h-screen bg-background">
-        {/* Header */}
-        <header className="border-b bg-card">
-          <div className="container mx-auto px-4 py-6">
-            <div className="flex items-center justify-between mb-6">
-              <div>
-                <h1 className="text-3xl font-bold text-foreground mb-2">Achievements & Rewards</h1>
-                <p className="text-muted-foreground">Track your journey and earn badges</p>
-              </div>
-              <Trophy className="h-12 w-12 text-primary" aria-hidden="true" />
+        <div className="container mx-auto px-4 py-6">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h1 className="text-3xl font-bold text-foreground mb-2">Achievements & Rewards</h1>
+              <p className="text-muted-foreground">Track your journey and earn badges</p>
             </div>
+            <Trophy className="h-12 w-12 text-primary" aria-hidden="true" />
+          </div>
 
-            {/* Stats Overview */}
+          {/* Stats Overview */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <Card>
                 <CardContent className="p-6">
@@ -191,7 +189,6 @@ export default function Gamification() {
               </Card>
             </div>
           </div>
-        </header>
 
         <main className="container mx-auto px-4 py-8">
           <Tabs defaultValue="badges" className="space-y-8">

@@ -138,22 +138,6 @@ const ItineraryBuilder = () => {
       </Helmet>
 
       <div className="min-h-screen bg-background">
-        {/* Header */}
-        <header className="border-b bg-card/50 backdrop-blur-sm sticky top-0 z-40">
-          <div className="container mx-auto px-4 py-4">
-            <div className="flex items-center justify-between">
-              <Link to="/" className="text-2xl font-bold text-primary">
-                WanderNest
-              </Link>
-              <nav className="hidden md:flex items-center gap-6">
-                <Link to="/" className="text-foreground/70 hover:text-foreground transition-colors">Home</Link>
-                <Link to="/destinations" className="text-foreground/70 hover:text-foreground transition-colors">Destinations</Link>
-                <Link to="/saved-trips" className="text-foreground/70 hover:text-foreground transition-colors">My Trips</Link>
-              </nav>
-            </div>
-          </div>
-        </header>
-
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-primary/10 via-background to-secondary/10 py-12 md:py-16">
           <div className="container mx-auto px-4">

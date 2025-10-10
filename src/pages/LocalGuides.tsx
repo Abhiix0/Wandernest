@@ -99,18 +99,16 @@ export default function LocalGuides() {
       </Helmet>
 
       <div className="min-h-screen bg-background">
-        {/* Header */}
-        <header className="border-b bg-card">
-          <div className="container mx-auto px-4 py-6">
-            <div className="flex items-center justify-between mb-6">
-              <div>
-                <h1 className="text-3xl font-bold text-foreground mb-2">Verified Local Guides</h1>
-                <p className="text-muted-foreground">Connect with trusted guides for authentic experiences</p>
-              </div>
-              <Shield className="h-12 w-12 text-primary" aria-hidden="true" />
+        <div className="container mx-auto px-4 py-6">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h1 className="text-3xl font-bold text-foreground mb-2">Verified Local Guides</h1>
+              <p className="text-muted-foreground">Connect with trusted guides for authentic experiences</p>
             </div>
+            <Shield className="h-12 w-12 text-primary" aria-hidden="true" />
+          </div>
 
-            {/* Search and Filters */}
+          {/* Search and Filters */}
             <div className="space-y-4">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5" aria-hidden="true" />
@@ -152,7 +150,6 @@ export default function LocalGuides() {
               </div>
             </div>
           </div>
-        </header>
 
         {/* Safety Verification Banner */}
         <div className="bg-primary/10 border-b border-primary/20">

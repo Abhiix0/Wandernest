@@ -10,25 +10,6 @@ import { Link } from "react-router-dom";
 const Contact = () => {
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b bg-card/50 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link to="/" className="text-2xl font-bold text-gradient">
-              WanderNest
-            </Link>
-            <nav className="hidden md:flex items-center gap-6">
-              <Link to="/" className="hover:text-primary transition-smooth">Home</Link>
-              <Link to="/destinations" className="hover:text-primary transition-smooth">Destinations</Link>
-              <Link to="/guides" className="hover:text-primary transition-smooth">Travel Guides</Link>
-              <Link to="/book" className="hover:text-primary transition-smooth">Book a Trip</Link>
-              <Link to="/about" className="hover:text-primary transition-smooth">About</Link>
-              <Link to="/contact" className="text-primary font-medium">Contact</Link>
-            </nav>
-          </div>
-        </div>
-      </header>
-
       {/* Hero Section */}
       <section className="bg-ocean-gradient text-white py-16">
         <div className="container mx-auto px-4 text-center">
