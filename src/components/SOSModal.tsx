@@ -11,6 +11,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Phone, MapPin, Send, Shield, AlertTriangle, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { logger } from "@/lib/logger";
 
 interface SOSModalProps {
   open: boolean;
@@ -77,7 +78,7 @@ const SOSModal = ({ open, onOpenChange }: SOSModalProps) => {
             description: "Unable to access your location. Please enable location services.",
             variant: "destructive",
           });
-          console.error("Geolocation error:", error);
+          logger.error("Geolocation error:", error);
         }
       );
     } else {
@@ -127,7 +128,7 @@ const SOSModal = ({ open, onOpenChange }: SOSModalProps) => {
           description: "Your location has been shared successfully.",
         });
       }).catch(err => {
-        console.error("Share error:", err);
+        logger.error("Share error:", err);
         // Fallback to copying
         navigator.clipboard.writeText(locationUrl);
         toast({

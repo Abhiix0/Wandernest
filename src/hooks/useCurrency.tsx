@@ -1,4 +1,6 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { EXCHANGE_RATE_CONFIG, STORAGE_KEYS } from '@/lib/constants';
+import { logger } from '@/lib/logger';
 
 export interface Country {
   code: string;
@@ -38,7 +40,7 @@ const CurrencyContext = createContext<CurrencyContextType | undefined>(undefined
 
 export const CurrencyProvider = ({ children }: { children: ReactNode }) => {
   const [selectedCountry, setSelectedCountryState] = useState<Country>(() => {
-    const stored = localStorage.getItem('wandernest_country');
+    const stored = localStorage.getItem(STORAGE_KEYS.country);
     if (stored) {
       try {
         return JSON.parse(stored);
@@ -56,36 +58,25 @@ export const CurrencyProvider = ({ children }: { children: ReactNode }) => {
     const fetchRates = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+        const response = await fetch(EXCHANGE_RATE_CONFIG.baseUrl);
         const data = await response.json();
         setExchangeRates(data.rates);
       } catch (error) {
-        console.error('Failed to fetch exchange rates:', error);
-        setExchangeRates({
-          USD: 1,
-          INR: 83,
-          GBP: 0.79,
-          EUR: 0.92,
-          JPY: 149,
-          AUD: 1.52,
-          CAD: 1.36,
-          CNY: 7.24,
-          AED: 3.67,
-          SGD: 1.34,
-        });
+        logger.apiError('exchange-rates', error);
+        setExchangeRates(EXCHANGE_RATE_CONFIG.fallbackRates);
       } finally {
         setIsLoading(false);
       }
     };
 
     fetchRates();
-    const interval = setInterval(fetchRates, 3600000);
+    const interval = setInterval(fetchRates, EXCHANGE_RATE_CONFIG.updateInterval);
     return () => clearInterval(interval);
   }, []);
 
   const setSelectedCountry = (country: Country) => {
     setSelectedCountryState(country);
-    localStorage.setItem('wandernest_country', JSON.stringify(country));
+    localStorage.setItem(STORAGE_KEYS.country, JSON.stringify(country));
   };
 
   const convertPrice = (price: number, fromCurrency: string = 'USD'): string => {

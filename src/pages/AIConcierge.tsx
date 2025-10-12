@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card";
 import { Bot, Send, Loader2, Sparkles } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useToast } from "@/hooks/use-toast";
+import { logger } from "@/lib/logger";
 
 type Message = {
   role: "user" | "assistant";
@@ -100,7 +101,7 @@ const AIConcierge = () => {
         }
       }
     } catch (error) {
-      console.error("Error:", error);
+      logger.error("AI Concierge error:", error);
       toast({
         title: "Error",
         description: "Failed to get response. Please try again.",
