@@ -47,7 +47,8 @@ export const destinations: Destination[] = [
     airport: "GOI - Goa International",
     travelType: ["Beach", "Party", "Cultural"],
     budgetLevel: "Low",
-    duration: ["Weekend", "1 Week"]
+    duration: ["Weekend", "1 Week"],
+    coordinates: { lat: 15.2993, lng: 74.1240 }
   },
   {
     id: 2,
@@ -65,7 +66,8 @@ export const destinations: Destination[] = [
     airport: "COK - Cochin International",
     travelType: ["Nature", "Cultural", "Wellness"],
     budgetLevel: "Medium",
-    duration: ["1 Week", "2+ Weeks"]
+    duration: ["1 Week", "2+ Weeks"],
+    coordinates: { lat: 10.8505, lng: 76.2711 }
   },
   {
     id: 3,
@@ -83,7 +85,8 @@ export const destinations: Destination[] = [
     airport: "JAI - Jaipur International",
     travelType: ["Cultural", "History", "Adventure"],
     budgetLevel: "Medium",
-    duration: ["1 Week", "2+ Weeks"]
+    duration: ["1 Week", "2+ Weeks"],
+    coordinates: { lat: 27.0238, lng: 74.2179 }
   },
   {
     id: 4,
@@ -101,7 +104,8 @@ export const destinations: Destination[] = [
     airport: "IXC - Chandigarh International",
     travelType: ["Adventure", "Nature", "Hiking"],
     budgetLevel: "Low",
-    duration: ["Weekend", "1 Week"]
+    duration: ["Weekend", "1 Week"],
+    coordinates: { lat: 31.1048, lng: 77.1734 }
   },
   {
     id: 5,
@@ -119,7 +123,8 @@ export const destinations: Destination[] = [
     airport: "IXL - Leh Kushok Bakula",
     travelType: ["Adventure", "Nature", "Spiritual"],
     budgetLevel: "Medium",
-    duration: ["1 Week", "2+ Weeks"]
+    duration: ["1 Week", "2+ Weeks"],
+    coordinates: { lat: 34.1526, lng: 77.5771 }
   },
   {
     id: 6,
@@ -137,7 +142,8 @@ export const destinations: Destination[] = [
     airport: "IXZ - Port Blair",
     travelType: ["Beach", "Diving", "Nature"],
     budgetLevel: "Medium",
-    duration: ["1 Week", "2+ Weeks"]
+    duration: ["1 Week", "2+ Weeks"],
+    coordinates: { lat: 11.7401, lng: 92.6586 }
   },
 
   // India - Mumbai Neighborhoods
@@ -164,7 +170,8 @@ export const destinations: Destination[] = [
     localTransport: ["Local trains (lifeline of Mumbai)", "Metro", "Auto-rickshaws", "BEST buses", "Taxis", "App-based cabs"],
     averageDailyCost: "$30-60",
     suggestedItinerary: ["Day 1: South Mumbai & Colonial Heritage", "Day 2: Bandra & Juhu Beach", "Day 3: Elephanta Caves Day Trip", "Day 4: Street Food Tour & Shopping"],
-    nearbyDestinations: ["Dadar", "Bandra", "Andheri", "Lonavala", "Alibaug"]
+    nearbyDestinations: ["Dadar", "Bandra", "Andheri", "Lonavala", "Alibaug"],
+    coordinates: { lat: 19.0760, lng: 72.8777 }
   },
   {
     id: 8,
@@ -190,7 +197,8 @@ export const destinations: Destination[] = [
     localTransport: ["Local trains (Dadar is a major junction)", "BEST buses", "Auto-rickshaws", "Walking is great for exploring"],
     averageDailyCost: "$20-40",
     suggestedItinerary: ["Early Morning: Dadar Flower Market (5-9 AM)", "Breakfast: Prakash Uphar Kendra for Misal Pav", "Mid-Morning: Shivaji Park walk", "Lunch: Local Maharashtrian Thali", "Afternoon: Visit Chaityabhoomi", "Evening: Street food at Dadar TT", "Dinner: Authentic South Indian cuisine"],
-    nearbyDestinations: ["Bandra", "Worli", "Prabhadevi", "Matunga"]
+    nearbyDestinations: ["Bandra", "Worli", "Prabhadevi", "Matunga"],
+    coordinates: { lat: 19.0176, lng: 72.8481 }
   },
   {
     id: 9,
@@ -216,7 +224,8 @@ export const destinations: Destination[] = [
     localTransport: ["Local trains (Bandra station)", "Metro (convenient)", "Auto-rickshaws", "Taxis", "App-based cabs", "Walking along promenades"],
     averageDailyCost: "$40-80",
     suggestedItinerary: ["Morning: Carter Road walk & breakfast at a seaside cafe", "Late Morning: Mount Mary Church", "Afternoon: Linking Road shopping", "Evening: Bandstand & celebrity home spotting", "Night: Dinner at Pali Hill restaurants", "Late Night: Bandra nightlife"],
-    nearbyDestinations: ["Juhu", "Khar", "Dadar", "Worli"]
+    nearbyDestinations: ["Juhu", "Khar", "Dadar", "Worli"],
+    coordinates: { lat: 19.0596, lng: 72.8295 }
   },
   {
     id: 10,
@@ -242,7 +251,8 @@ export const destinations: Destination[] = [
     localTransport: ["Metro (very convenient, connects East & West)", "Local trains", "Auto-rickshaws", "App-based cabs", "BEST buses"],
     averageDailyCost: "$30-50",
     suggestedItinerary: ["Morning: Versova Beach walk", "Brunch: Versova village cafe", "Afternoon: Lokhandwala shopping", "Evening: Prithvi Theatre performance or cafe", "Dinner: Local restaurant in Andheri West", "Optional: ISKCON Temple visit"],
-    nearbyDestinations: ["Juhu", "Bandra", "Goregaon", "Vile Parle"]
+    nearbyDestinations: ["Juhu", "Bandra", "Goregaon", "Vile Parle"],
+    coordinates: { lat: 19.1136, lng: 72.8697 }
   },
   {
     id: 11,
@@ -268,7 +278,8 @@ export const destinations: Destination[] = [
     localTransport: ["Auto-rickshaws", "Taxis", "App-based cabs", "BEST buses", "Walking on beach road"],
     averageDailyCost: "$50-100",
     suggestedItinerary: ["Morning: Hotel breakfast or local cafe", "Late Morning: Shopping at Juhu market", "Afternoon: Relax or visit nearby attractions", "Evening: Juhu Beach sunset & street food", "Night: Dinner at upscale restaurant"],
-    nearbyDestinations: ["Andheri", "Bandra", "Vile Parle", "Goregaon"]
+    nearbyDestinations: ["Andheri", "Bandra", "Vile Parle", "Goregaon"],
+    coordinates: { lat: 19.0990, lng: 72.8258 }
   },
 
   // Asia - Major Cities & Regions
@@ -288,7 +299,8 @@ export const destinations: Destination[] = [
     airport: "DPS - Ngurah Rai",
     travelType: ["Beach", "Cultural", "Adventure"],
     budgetLevel: "Medium",
-    duration: ["1 Week", "2+ Weeks"]
+    duration: ["1 Week", "2+ Weeks"],
+    coordinates: { lat: -8.3405, lng: 115.0920 }
   },
   {
     id: 13,
@@ -306,7 +318,8 @@ export const destinations: Destination[] = [
     airport: "NRT - Narita",
     travelType: ["Urban", "Cultural", "Food"],
     budgetLevel: "High",
-    duration: ["Weekend", "1 Week"]
+    duration: ["Weekend", "1 Week"],
+    coordinates: { lat: 35.6762, lng: 139.6503 }
   },
   {
     id: 14,
@@ -324,7 +337,8 @@ export const destinations: Destination[] = [
     airport: "KIX - Kansai International",
     travelType: ["Cultural", "History", "Nature"],
     budgetLevel: "High",
-    duration: ["Weekend", "1 Week"]
+    duration: ["Weekend", "1 Week"],
+    coordinates: { lat: 35.0116, lng: 135.7681 }
   },
   {
     id: 15,
@@ -342,7 +356,8 @@ export const destinations: Destination[] = [
     airport: "DXB - Dubai International",
     travelType: ["Luxury", "Shopping", "Urban"],
     budgetLevel: "High",
-    duration: ["Weekend", "1 Week"]
+    duration: ["Weekend", "1 Week"],
+    coordinates: { lat: 25.2048, lng: 55.2708 }
   },
   {
     id: 16,
@@ -360,7 +375,8 @@ export const destinations: Destination[] = [
     airport: "BKK - Suvarnabhumi",
     travelType: ["Cultural", "Food", "Urban"],
     budgetLevel: "Low",
-    duration: ["Weekend", "1 Week"]
+    duration: ["Weekend", "1 Week"],
+    coordinates: { lat: 13.7563, lng: 100.5018 }
   },
   {
     id: 17,
@@ -378,7 +394,8 @@ export const destinations: Destination[] = [
     airport: "HKT - Phuket International",
     travelType: ["Beach", "Party", "Diving"],
     budgetLevel: "Low",
-    duration: ["Weekend", "1 Week"]
+    duration: ["Weekend", "1 Week"],
+    coordinates: { lat: 7.8804, lng: 98.3923 }
   },
   {
     id: 18,
@@ -396,7 +413,8 @@ export const destinations: Destination[] = [
     airport: "MLE - Velana International",
     travelType: ["Beach", "Luxury", "Romantic"],
     budgetLevel: "High",
-    duration: ["1 Week", "2+ Weeks"]
+    duration: ["1 Week", "2+ Weeks"],
+    coordinates: { lat: 3.2028, lng: 73.2207 }
   },
   {
     id: 19,
@@ -414,7 +432,8 @@ export const destinations: Destination[] = [
     airport: "SIN - Changi",
     travelType: ["Urban", "Family", "Food"],
     budgetLevel: "High",
-    duration: ["Weekend", "1 Week"]
+    duration: ["Weekend", "1 Week"],
+    coordinates: { lat: 1.3521, lng: 103.8198 }
   },
   {
     id: 20,
@@ -432,7 +451,8 @@ export const destinations: Destination[] = [
     airport: "IST - Istanbul Airport",
     travelType: ["Cultural", "History", "Food"],
     budgetLevel: "Medium",
-    duration: ["Weekend", "1 Week"]
+    duration: ["Weekend", "1 Week"],
+    coordinates: { lat: 41.0082, lng: 28.9784 }
   },
   {
     id: 21,
