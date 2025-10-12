@@ -1,14 +1,10 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet";
-import { MapContainer, TileLayer } from "react-leaflet";
 import { MapPin, Hotel, UtensilsCrossed, Landmark, Shield, Navigation, Heart, Filter } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
-import { destinations } from "@/data/destinations";
-import { MapMarkers } from "@/components/MapMarkers";
-import "leaflet/dist/leaflet.css";
 
 interface Location {
   id: string;
@@ -20,35 +16,69 @@ interface Location {
   price?: string;
   safetyScore?: number;
   saved: boolean;
-  description?: string;
-  detailsLink?: string;
 }
 
 const InteractiveMap = () => {
   const { toast } = useToast();
-  const [activeFilters, setActiveFilters] = useState<string[]>(["attraction"]);
+  const [activeFilters, setActiveFilters] = useState<string[]>(["attraction", "hotel", "restaurant", "safety"]);
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
   const [showRouteOptions, setShowRouteOptions] = useState(false);
 
-  // Transform destinations data into map locations
-  const generateLocations = (): Location[] => {
-    return destinations
-      .filter(dest => dest.coordinates)
-      .map(dest => ({
-        id: dest.id.toString(),
-        name: dest.name,
-        category: "attraction" as const,
-        lat: dest.coordinates!.lat,
-        lng: dest.coordinates!.lng,
-        rating: dest.rating,
-        price: dest.price,
-        saved: false,
-        description: dest.description,
-        detailsLink: `/destinations/${dest.id}`
-      }));
-  };
+  const locations: Location[] = [
+    {
+      id: "1",
+      name: "Eiffel Tower",
+      category: "attraction",
+      lat: 48.8584,
+      lng: 2.2945,
+      rating: 4.8,
+      price: "€25",
+      saved: false,
+    },
+    {
+      id: "2",
+      name: "Hotel Le Marais",
+      category: "hotel",
+      lat: 48.8566,
+      lng: 2.3522,
+      rating: 4.5,
+      price: "€150/night",
+      safetyScore: 95,
+      saved: true,
+    },
+    {
+      id: "3",
+      name: "Le Comptoir du Relais",
+      category: "restaurant",
+      lat: 48.8534,
+      lng: 2.3384,
+      rating: 4.6,
+      price: "€€€",
+      saved: false,
+    },
+    {
+      id: "4",
+      name: "Police Station - 6th Arr.",
+      category: "safety",
+      lat: 48.8499,
+      lng: 2.3341,
+      rating: 0,
+      safetyScore: 100,
+      saved: false,
+    },
+    {
+      id: "5",
+      name: "Louvre Museum",
+      category: "attraction",
+      lat: 48.8606,
+      lng: 2.3376,
+      rating: 4.9,
+      price: "€17",
+      saved: true,
+    },
+  ];
 
-  const [locationStates, setLocationStates] = useState<Location[]>(generateLocations());
+  const [locationStates, setLocationStates] = useState(locations);
 
   const filters = [
     { value: "attraction", label: "Attractions", icon: Landmark, color: "bg-blue-500" },
@@ -143,25 +173,37 @@ const InteractiveMap = () => {
 
           <div className="grid lg:grid-cols-3 gap-6">
             {/* Map Display */}
-            <section className="lg:col-span-2" aria-label="Interactive tourist map">
-              <Card className="border-primary/20 shadow-lg overflow-hidden rounded-xl">
-                <div className="relative h-[70vh] min-h-[500px]">
-                  <MapContainer
-                    center={[20.5937, 78.9629]}
-                    zoom={5}
-                    style={{ height: "100%", width: "100%", borderRadius: "0.75rem" }}
-                    scrollWheelZoom={true}
-                    className="z-0"
-                  >
-                    <TileLayer
-                      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    />
-                    <MapMarkers 
-                      locations={filteredLocations} 
-                      onMarkerClick={setSelectedLocation}
-                    />
-                  </MapContainer>
+            <section className="lg:col-span-2" aria-label="Map view">
+              <Card className="border-primary/20 shadow-lg overflow-hidden">
+                <div className="relative bg-muted/30 h-[600px] flex items-center justify-center">
+                  {/* Simulated Map */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-green-50/50 dark:from-blue-950/20 dark:to-green-950/20">
+                    {filteredLocations.map((location) => {
+                      const Icon = getCategoryIcon(location.category);
+                      const colorClass = getCategoryColor(location.category);
+                      return (
+                        <button
+                          key={location.id}
+                          className={`absolute p-2 rounded-full ${colorClass} text-white shadow-lg hover:scale-110 transition-transform cursor-pointer`}
+                          style={{
+                            left: `${(location.lng - 2.2) * 400}px`,
+                            top: `${(48.87 - location.lat) * 800}px`,
+                          }}
+                          onClick={() => setSelectedLocation(location)}
+                          aria-label={`View details for ${location.name}`}
+                        >
+                          <Icon className="h-5 w-5" aria-hidden="true" />
+                        </button>
+                      );
+                    })}
+                  </div>
+                  <div className="relative z-10 text-center p-6 bg-background/80 backdrop-blur-sm rounded-lg shadow-xl">
+                    <MapPin className="h-12 w-12 text-primary mx-auto mb-4" aria-hidden="true" />
+                    <h3 className="text-xl font-semibold mb-2">Interactive Map View</h3>
+                    <p className="text-muted-foreground">
+                      Click on markers to view location details
+                    </p>
+                  </div>
                 </div>
               </Card>
 
