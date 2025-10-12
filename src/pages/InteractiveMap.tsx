@@ -1,28 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Helmet } from "react-helmet";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import { Link } from "react-router-dom";
+import { MapContainer, TileLayer } from "react-leaflet";
 import { MapPin, Hotel, UtensilsCrossed, Landmark, Shield, Navigation, Heart, Filter } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { destinations } from "@/data/destinations";
-import L from "leaflet";
+import { MapMarkers } from "@/components/MapMarkers";
 import "leaflet/dist/leaflet.css";
-
-// Fix for default marker icons in Leaflet
-import icon from "leaflet/dist/images/marker-icon.png";
-import iconShadow from "leaflet/dist/images/marker-shadow.png";
-
-let DefaultIcon = L.icon({
-  iconUrl: icon,
-  shadowUrl: iconShadow,
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-});
-
-L.Marker.prototype.options.icon = DefaultIcon;
 
 interface Location {
   id: string;
@@ -171,37 +157,10 @@ const InteractiveMap = () => {
                       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
-                    {filteredLocations.map((location) => (
-                      <Marker
-                        key={location.id}
-                        position={[location.lat, location.lng]}
-                        eventHandlers={{
-                          click: () => setSelectedLocation(location),
-                        }}
-                      >
-                        <Popup>
-                          <div className="p-2 min-w-[200px]">
-                            <h3 className="font-semibold text-base mb-1">{location.name}</h3>
-                            <p className="text-sm text-muted-foreground mb-2 capitalize">
-                              {location.category}
-                            </p>
-                            {location.description && (
-                              <p className="text-sm mb-2 line-clamp-2">{location.description}</p>
-                            )}
-                            {location.rating > 0 && (
-                              <p className="text-sm mb-2">Rating: {location.rating} ⭐</p>
-                            )}
-                            {location.detailsLink && (
-                              <Link to={location.detailsLink}>
-                                <Button size="sm" className="w-full mt-2">
-                                  View Details
-                                </Button>
-                              </Link>
-                            )}
-                          </div>
-                        </Popup>
-                      </Marker>
-                    ))}
+                    <MapMarkers 
+                      locations={filteredLocations} 
+                      onMarkerClick={setSelectedLocation}
+                    />
                   </MapContainer>
                 </div>
               </Card>
