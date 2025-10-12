@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CurrencyProvider } from "@/hooks/useCurrency";
+import { ErrorBoundary } from "@/components/common/ErrorBoundary";
 import { Navbar } from "./components/Navbar";
 import { NavigationDrawer } from "./components/NavigationDrawer";
 import Index from "./pages/Index";
@@ -36,43 +37,45 @@ const App = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <CurrencyProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <Navbar onOpenSidebar={() => setSidebarOpen(true)} />
-            <NavigationDrawer open={sidebarOpen} onOpenChange={setSidebarOpen} />
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/destinations" element={<Destinations />} />
-              <Route path="/destinations/:id" element={<DestinationDetails />} />
-              <Route path="/guides" element={<TravelGuides />} />
-              <Route path="/safety" element={<Safety />} />
-              <Route path="/transportation" element={<Transportation />} />
-              <Route path="/itinerary-builder" element={<ItineraryBuilder />} />
-              <Route path="/saved-trips" element={<SavedTrips />} />
-              <Route path="/packing-list" element={<PackingList />} />
-              <Route path="/offline-mode" element={<OfflineMode />} />
-              <Route path="/map" element={<InteractiveMap />} />
-              <Route path="/travel-buddy" element={<TravelBuddy />} />
-              <Route path="/local-guides" element={<LocalGuides />} />
-              <Route path="/community" element={<Community />} />
-              <Route path="/achievements" element={<Gamification />} />
-              <Route path="/ai-concierge" element={<AIConcierge />} />
-              <Route path="/smart-predictions" element={<SmartPredictions />} />
-              <Route path="/book" element={<BookTrip />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-            <SOSButton />
-          </BrowserRouter>
-        </TooltipProvider>
-      </CurrencyProvider>
-    </QueryClientProvider>
+    <ErrorBoundary>
+      <QueryClientProvider client={queryClient}>
+        <CurrencyProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <Navbar onOpenSidebar={() => setSidebarOpen(true)} />
+              <NavigationDrawer open={sidebarOpen} onOpenChange={setSidebarOpen} />
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/destinations" element={<Destinations />} />
+                <Route path="/destinations/:id" element={<DestinationDetails />} />
+                <Route path="/guides" element={<TravelGuides />} />
+                <Route path="/safety" element={<Safety />} />
+                <Route path="/transportation" element={<Transportation />} />
+                <Route path="/itinerary-builder" element={<ItineraryBuilder />} />
+                <Route path="/saved-trips" element={<SavedTrips />} />
+                <Route path="/packing-list" element={<PackingList />} />
+                <Route path="/offline-mode" element={<OfflineMode />} />
+                <Route path="/map" element={<InteractiveMap />} />
+                <Route path="/travel-buddy" element={<TravelBuddy />} />
+                <Route path="/local-guides" element={<LocalGuides />} />
+                <Route path="/community" element={<Community />} />
+                <Route path="/achievements" element={<Gamification />} />
+                <Route path="/ai-concierge" element={<AIConcierge />} />
+                <Route path="/smart-predictions" element={<SmartPredictions />} />
+                <Route path="/book" element={<BookTrip />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+              <SOSButton />
+            </BrowserRouter>
+          </TooltipProvider>
+        </CurrencyProvider>
+      </QueryClientProvider>
+    </ErrorBoundary>
   );
 };
 
