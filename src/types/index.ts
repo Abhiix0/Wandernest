@@ -49,6 +49,12 @@ export interface Destination extends BaseEntity {
   nearbyDestinations?: string[];
   activities?: Activity[];
   climate?: ClimateInfo;
+  isVerified?: boolean;
+  verificationSource?: string;
+  duration?: string;
+  locationType?: string;
+  continent?: string;
+  parentLocation?: string;
 }
 
 export interface Activity {
@@ -59,6 +65,8 @@ export interface Activity {
   price: number;
   difficulty: 'easy' | 'medium' | 'hard';
   category: string;
+  isVerified?: boolean;
+  verificationSource?: string;
 }
 
 export interface ClimateInfo {
@@ -100,6 +108,8 @@ export interface Review extends BaseEntity {
   images?: string[];
   helpful?: number;
   verified?: boolean;
+  isVerified?: boolean;
+  verificationSource?: string;
 }
 
 // Gamification Types

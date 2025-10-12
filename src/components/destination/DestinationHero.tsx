@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Price } from "@/components/Price";
+import { VerifiedBadge } from "@/components/VerifiedBadge";
 import { Star, DollarSign, Clock, MapPin } from "lucide-react";
 import { Destination } from "@/types";
 
@@ -27,13 +28,21 @@ export const DestinationHero = ({
                 </Badge>
               )}
               <Badge variant="secondary" className="bg-white/20 backdrop-blur-sm text-white">
-                {destination.continent}
+                {destination.continent || destination.country}
               </Badge>
             </div>
             
-            <h1 className="text-4xl md:text-6xl font-bold mb-4">
-              {destination.name}
-            </h1>
+            <div className="flex items-center gap-3 mb-4">
+              <h1 className="text-4xl md:text-6xl font-bold">
+                {destination.name}
+              </h1>
+              {destination.isVerified && (
+                <VerifiedBadge 
+                  source={destination.verificationSource || "trusted APIs"} 
+                  size="md"
+                />
+              )}
+            </div>
             
             {destination.parentLocation && (
               <p className="text-xl mb-4 opacity-90">
@@ -53,13 +62,15 @@ export const DestinationHero = ({
               <div className="flex items-center gap-2">
                 <DollarSign className="h-5 w-5" />
                 <span className="text-lg font-semibold">
-                  <Price priceString={destination.price} showOriginal />
+                  <Price priceString={destination.price.toString()} showOriginal />
                 </span>
               </div>
-              <div className="flex items-center gap-2">
-                <Clock className="h-5 w-5" />
-                <span>{destination.duration}</span>
-              </div>
+              {destination.duration && (
+                <div className="flex items-center gap-2">
+                  <Clock className="h-5 w-5" />
+                  <span>{Array.isArray(destination.duration) ? destination.duration[0] : destination.duration}</span>
+                </div>
+              )}
             </div>
             
             <p className="text-lg mb-8 opacity-90">

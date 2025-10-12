@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { CurrencySelector } from "@/components/CurrencySelector";
 import { Price } from "@/components/Price";
 import { SearchBarWithAutocomplete } from "@/components/SearchBarWithAutocomplete";
+import { VerifiedBadge } from "@/components/VerifiedBadge";
 import { useState, useEffect } from "react";
 import { destinations, Destination } from "@/data/destinations";
 import Fuse from "fuse.js";
@@ -367,8 +368,16 @@ const Destinations = () => {
                     </div>
                     <CardHeader>
                       <CardTitle className="flex items-center justify-between">
-                        <div className="flex flex-col">
-                          <span className="text-xl">{destination.name}</span>
+                        <div className="flex flex-col gap-1">
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <span className="text-xl">{destination.name}</span>
+                            {destination.isVerified && (
+                              <VerifiedBadge 
+                                source={destination.verificationSource || "trusted APIs"}
+                                size="sm"
+                              />
+                            )}
+                          </div>
                           <span className="text-sm font-normal text-muted-foreground">{destination.country}</span>
                         </div>
                         <span className="text-lg text-primary font-bold whitespace-nowrap ml-2">

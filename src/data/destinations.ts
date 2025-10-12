@@ -27,6 +27,8 @@ export interface Destination {
   entryRules?: string[];
   rituals?: string[];
   coordinates?: { lat: number; lng: number };
+  isVerified?: boolean;
+  verificationSource?: string;
 }
 
 export const destinations: Destination[] = [
@@ -47,7 +49,10 @@ export const destinations: Destination[] = [
     airport: "GOI - Goa International",
     travelType: ["Beach", "Party", "Cultural"],
     budgetLevel: "Low",
-    duration: ["Weekend", "1 Week"]
+    duration: ["Weekend", "1 Week"],
+    coordinates: { lat: 15.2993, lng: 74.1240 },
+    isVerified: true,
+    verificationSource: "OpenStreetMap"
   },
   {
     id: 2,
@@ -288,7 +293,10 @@ export const destinations: Destination[] = [
     airport: "DPS - Ngurah Rai",
     travelType: ["Beach", "Cultural", "Adventure"],
     budgetLevel: "Medium",
-    duration: ["1 Week", "2+ Weeks"]
+    duration: ["1 Week", "2+ Weeks"],
+    coordinates: { lat: -8.3405, lng: 115.0920 },
+    isVerified: true,
+    verificationSource: "OpenStreetMap & Wikipedia"
   },
   {
     id: 13,
