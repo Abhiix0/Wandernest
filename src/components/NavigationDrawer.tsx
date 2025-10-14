@@ -62,10 +62,13 @@ export const NavigationDrawer = ({ open, onOpenChange }: NavigationDrawerProps) 
     { name: "Language Translator", path: "/translator", icon: Languages },
     { name: "Nearby Attractions", path: "/nearby", icon: Navigation },
     { name: "Emergency Contacts", path: "/emergency", icon: AlertCircle },
+    { name: "Travel Buddy", path: "/travel-buddy", icon: Users2 },
+    { name: "AI Concierge", path: "/ai-concierge", icon: MessageSquare },
+  ];
+
+  const additionalFeatures = [
     { name: "Packing List", path: "/packing-list", icon: FileText },
     { name: "Safety Resources", path: "/safety", icon: Shield },
-    { name: "AI Concierge", path: "/ai-concierge", icon: MessageSquare },
-    { name: "Travel Buddy Finder", path: "/travel-buddy", icon: Users2 },
     { name: "Local Guides", path: "/local-guides", icon: User },
     { name: "Achievements", path: "/achievements", icon: Gamepad2 },
     { name: "Smart Predictions", path: "/smart-predictions", icon: TrendingUp },
@@ -130,6 +133,32 @@ export const NavigationDrawer = ({ open, onOpenChange }: NavigationDrawerProps) 
             </h3>
             <div className="space-y-1">
               {featureLinks.map((link) => (
+                <Link 
+                  key={link.path} 
+                  to={link.path}
+                  onClick={handleLinkClick}
+                >
+                  <Button
+                    variant="ghost"
+                    className="w-full justify-start"
+                  >
+                    <link.icon className="mr-3 h-4 w-4" />
+                    {link.name}
+                  </Button>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <Separator className="my-4" />
+
+          {/* Additional Features */}
+          <div className="mb-6">
+            <h3 className="mb-3 text-sm font-semibold text-muted-foreground uppercase tracking-wider">
+              More Tools
+            </h3>
+            <div className="space-y-1">
+              {additionalFeatures.map((link) => (
                 <Link 
                   key={link.path} 
                   to={link.path}
