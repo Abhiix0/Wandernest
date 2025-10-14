@@ -32,6 +32,12 @@ import {
   TrendingUp,
   Car,
   Users2,
+  Cloud,
+  DollarSign,
+  Languages,
+  Navigation,
+  AlertCircle,
+  ArrowRightLeft,
 } from "lucide-react";
 
 interface NavigationDrawerProps {
@@ -50,6 +56,12 @@ export const NavigationDrawer = ({ open, onOpenChange }: NavigationDrawerProps) 
   const featureLinks = [
     { name: "Interactive Map", path: "/map", icon: Map },
     { name: "Itinerary Builder", path: "/itinerary-builder", icon: Route },
+    { name: "Currency Converter", path: "/currency", icon: ArrowRightLeft },
+    { name: "Weather Forecast", path: "/weather", icon: Cloud },
+    { name: "Expense Tracker", path: "/expenses", icon: DollarSign },
+    { name: "Language Translator", path: "/translator", icon: Languages },
+    { name: "Nearby Attractions", path: "/nearby", icon: Navigation },
+    { name: "Emergency Contacts", path: "/emergency", icon: AlertCircle },
     { name: "Packing List", path: "/packing-list", icon: FileText },
     { name: "Safety Resources", path: "/safety", icon: Shield },
     { name: "AI Concierge", path: "/ai-concierge", icon: MessageSquare },

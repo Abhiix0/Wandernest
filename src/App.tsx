@@ -28,6 +28,12 @@ import Community from "./pages/Community";
 import Gamification from "./pages/Gamification";
 import AIConcierge from "./pages/AIConcierge";
 import SmartPredictions from "./pages/SmartPredictions";
+import WeatherForecast from "./pages/WeatherForecast";
+import ExpenseTracker from "./pages/ExpenseTracker";
+import LanguageTranslator from "./pages/LanguageTranslator";
+import NearbyAttractions from "./pages/NearbyAttractions";
+import EmergencyContacts from "./pages/EmergencyContacts";
+import CurrencyConverter from "./pages/CurrencyConverter";
 import SOSButton from "./components/SOSButton";
 import NotFound from "./pages/NotFound";
 
@@ -64,6 +70,12 @@ const App = () => {
                 <Route path="/achievements" element={<Gamification />} />
                 <Route path="/ai-concierge" element={<AIConcierge />} />
                 <Route path="/smart-predictions" element={<SmartPredictions />} />
+                <Route path="/weather" element={<WeatherForecast />} />
+                <Route path="/expenses" element={<ExpenseTracker />} />
+                <Route path="/translator" element={<LanguageTranslator />} />
+                <Route path="/nearby" element={<NearbyAttractions />} />
+                <Route path="/emergency" element={<EmergencyContacts />} />
+                <Route path="/currency" element={<CurrencyConverter />} />
                 <Route path="/book" element={<BookTrip />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
