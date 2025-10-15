@@ -53,17 +53,23 @@ export const NavigationDrawer = ({ open, onOpenChange }: NavigationDrawerProps) 
     { name: "Community", path: "/community", icon: Users },
   ];
 
-  const featureLinks = [
+  const planningTools = [
     { name: "Interactive Map", path: "/map", icon: Map },
     { name: "Itinerary Builder", path: "/itinerary-builder", icon: Route },
-    { name: "Currency Converter", path: "/currency", icon: ArrowRightLeft },
-    { name: "Weather Forecast", path: "/weather", icon: Cloud },
-    { name: "Expense Tracker", path: "/expenses", icon: DollarSign },
-    { name: "Language Translator", path: "/translator", icon: Languages },
-    { name: "Nearby Attractions", path: "/nearby", icon: Navigation },
-    { name: "Emergency Contacts", path: "/emergency", icon: AlertCircle },
     { name: "Travel Buddy", path: "/travel-buddy", icon: Users2 },
     { name: "AI Concierge", path: "/ai-concierge", icon: MessageSquare },
+  ];
+
+  const utilities = [
+    { name: "Currency Converter", path: "/currency", icon: ArrowRightLeft },
+    { name: "Expense Tracker", path: "/expenses", icon: DollarSign },
+    { name: "Language Translator", path: "/translator", icon: Languages },
+  ];
+
+  const travelEssentials = [
+    { name: "Weather Forecast", path: "/weather", icon: Cloud },
+    { name: "Nearby Attractions", path: "/nearby", icon: Navigation },
+    { name: "Emergency Contacts", path: "/emergency", icon: AlertCircle },
   ];
 
   const additionalFeatures = [
@@ -131,22 +137,77 @@ export const NavigationDrawer = ({ open, onOpenChange }: NavigationDrawerProps) 
             <h3 className="mb-3 text-sm font-semibold text-muted-foreground uppercase tracking-wider">
               Features
             </h3>
-            <div className="space-y-1">
-              {featureLinks.map((link) => (
-                <Link 
-                  key={link.path} 
-                  to={link.path}
-                  onClick={handleLinkClick}
-                >
-                  <Button
-                    variant="ghost"
-                    className="w-full justify-start"
+
+            {/* Planning Tools */}
+            <div className="mb-4">
+              <h4 className="mb-2 text-xs font-medium text-muted-foreground/80 pl-2">
+                🌍 Planning Tools
+              </h4>
+              <div className="space-y-1">
+                {planningTools.map((link) => (
+                  <Link 
+                    key={link.path} 
+                    to={link.path}
+                    onClick={handleLinkClick}
                   >
-                    <link.icon className="mr-3 h-4 w-4" />
-                    {link.name}
-                  </Button>
-                </Link>
-              ))}
+                    <Button
+                      variant="ghost"
+                      className="w-full justify-start"
+                    >
+                      <link.icon className="mr-3 h-4 w-4" />
+                      {link.name}
+                    </Button>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Utilities */}
+            <div className="mb-4">
+              <h4 className="mb-2 text-xs font-medium text-muted-foreground/80 pl-2">
+                💼 Utilities
+              </h4>
+              <div className="space-y-1">
+                {utilities.map((link) => (
+                  <Link 
+                    key={link.path} 
+                    to={link.path}
+                    onClick={handleLinkClick}
+                  >
+                    <Button
+                      variant="ghost"
+                      className="w-full justify-start"
+                    >
+                      <link.icon className="mr-3 h-4 w-4" />
+                      {link.name}
+                    </Button>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Travel Essentials */}
+            <div className="mb-4">
+              <h4 className="mb-2 text-xs font-medium text-muted-foreground/80 pl-2">
+                🗺️ Travel Essentials
+              </h4>
+              <div className="space-y-1">
+                {travelEssentials.map((link) => (
+                  <Link 
+                    key={link.path} 
+                    to={link.path}
+                    onClick={handleLinkClick}
+                  >
+                    <Button
+                      variant="ghost"
+                      className="w-full justify-start"
+                    >
+                      <link.icon className="mr-3 h-4 w-4" />
+                      {link.name}
+                    </Button>
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
 
